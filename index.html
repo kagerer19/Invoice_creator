@@ -2,7 +2,7 @@
 <html class="no-js" lang="">
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Invoice Creator</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="">
@@ -19,41 +19,42 @@
 </head>
 <body>
 <main>
+  <div class="invoice-header">
+    <h2>Invoice Creator <br>
+      <span class="header-text">Thanks for choosing GoodCrop, LLC!</span>
+    </h2>
+  </div>
   <section class="invoice-container">
-    <div class="invoice-header">
-      <h2>Invoice Creator <br>
-        Thanks for choosing GoodCrop, LLC!
-      </h2>
-    </div>
     <ul class="purchase-options">
       <li class="purchase-items">Wash Car: $10</li>
       <li class="purchase-items">Mow lawn: $20</li>
       <li class="purchase-items">Pull Weeds: $30</li>
     </ul>
-  </section>
-  <section class="receipt-items">
-    <ul class="cart-items">
-      <li class="purchase-items">Wash Car</li>
-      <li class="purchase-items">Mow lawn</li>
-      <li class="purchase-items">Pull Weeds</li>
-    </ul>
-    <hr>
-  </section>
-  <section class="send-invoice">
-    <p>Notes <br>
-      We accept cash, credit card, or via PayPal
-    </p>
-    <div class="checkout-section">
-      <p>Total Amount <br>
-        $60
+    <section class="receipt-items">
+      <p class="tasks">TASK <span>Total</span></p>
+      <ul class="cart-items">
+        <li class="#">Wash Car</li>
+        <li class="#">Mow lawn</li>
+        <li class="#">Pull Weeds</li>
+      </ul>
+      <hr>
+    </section>
+    <section class="send-invoice">
+      <p>Notes <br>
+        We accept cash, credit card, or via PayPal
       </p>
-      <button class="checkout-button">
+      <div class="checkout-section">
+        <p>Total Amount <br>
+          $60
+        </p>
+        <button class="checkout-button">
         <span class="material-symbols-outlined">
 forward_to_inbox
 </span>
-        Send Invoice
-      </button>
-    </div>
+          Send Invoice
+        </button>
+      </div>
+    </section>
   </section>
 </main>
 <script src="js/vendor/modernizr-3.11.2.min.js"></script>
