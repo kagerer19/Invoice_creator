@@ -8,7 +8,7 @@
   font-size: 16px;
 }
 
-.container {
+.invoice {
   width: calc(550rem / 16);
   height: 44.9375rem;
   background: #1F2937;;
@@ -16,7 +16,7 @@
 
 }
 
-.top {
+.header {
   text-align: center;
   color: #fff;
   background: #3A69D2;
@@ -24,7 +24,7 @@
 
 }
 
-.top .heading {
+.header .heading {
   padding: 3.6875rem 4.4375rem 3.1875rem 4.4375rem;
 }
 
@@ -42,7 +42,7 @@
   line-height: 1.75rem;
 }
 
-.mid {
+.purchase_options {
   display: flex;
   flex-direction: column;
   padding: 2.5625rem 2.25rem 0 2.375rem;
@@ -73,7 +73,7 @@
   flex-direction: column;
 }
 
-.frame {
+.item_headers {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,7 +81,7 @@
   margin-bottom: calc(24rem / 16);
 }
 
-.frame span {
+.item_headers span {
   display: block;
   font-weight: 700;
   font-size: calc(12rem / 16);
@@ -89,14 +89,14 @@
   line-height: calc(20rem / 16);
 }
 
-.frame .service-done {
+.item_headers .service-done {
   font-weight: 700;
   font-size: calc(20rem / 16);
   line-height: calc(20rem / 16);
   color: #F5F5F5;
 }
 
-.frame .cash {
+.item_headers .cash {
   color: #F5F5F5;
   font-size: calc(24rem / 16);
   font-weight: 300;
@@ -122,7 +122,7 @@
 
 }
 
-.bottom {
+.footer {
   padding: 0 calc(40rem / 16);
 }
 
@@ -175,7 +175,7 @@
 
 @media (max-width: 391px) {
 
-  .container {
+  .invoice {
     width: 345px;
   }
 
@@ -199,7 +199,7 @@
     font-size: 11px;
   }
 
-  .container {
+  .invoice {
     height: 50rem;
     margin: 1rem;
   }

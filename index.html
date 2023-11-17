@@ -2,43 +2,42 @@
 <html lang="en">
 <header>
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
 </header>
 <body>
-<section class="container">
-  <div class="top">
+<section class="invoice">
+  <div class="header">
     <div class="heading">
       <h2> Invoice Creator </h2>
       <h3> Thanks for choosing GoodCorp, CLL!</h3>
     </div>
   </div>
-  <div class="mid">
+  <div class="purchase_options">
     <div class="buttons">
-      <button class="btn" id="wash-btn"> Wash Car : $10 </button>
-      <button class="btn" id="mow"> Mow Lawn: $20 </button>
-      <button class="btn" id="pull"> Pull weeds: $30 </button>
+      <button class="btn" id="wash-btn" onclick=""> Wash Car : $10</button>
+      <button class="btn" id="mow"> Mow Lawn: $20</button>
+      <button class="btn" id="pull"> Pull weeds: $30</button>
     </div>
     <div class="tasks" id="task-added">
 
-      <div class="frame">
+      <div class="item_headers">
         <span> Task </span>
         <span> TOTAL</span>
       </div>
     </div>
   </div>
-  <div class="bottom">
+  <div class="footer">
     <p class="line-breaker"></p>
-    <div class="frame btm">
+    <div class="item_headers btm">
       <span> Notes </span>
       <span> TOTAL Amount </span>
     </div>
-    <div class="frame btm">
+    <div class="item_headers btm">
       <span class="note" id="note"> </span>
       <span class="ttl" id="total"> $0 </span>
     </div>
-    <button class="send" id="send"><i class="material-symbols-outlined">
-mail
-</i>Send Invoice </button>
+    <button class="send" id="send"><i class="material-symbols-outlined">mail</i>Send Invoice</button>
   </div>
 </section>
 <script src=" ../Invoice_creator/js/main.js"></script>
