@@ -105,12 +105,13 @@
 
 .cash span {
   display: inline;
-  color: #918E9B;
+  color: #F5F5F5;
   font-size: calc(24rem / 16);
   font-weight: 300;
 }
 
 .services {
+  color: #F5F5F5;
   margin-bottom: 2rem;
 }
 
