@@ -113,11 +113,17 @@
 .services {
   color: #F5F5F5;
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.services:nth-child(3) {
+align-self: flex-end;
 }
 
 .line-breaker {
   width: calc(471rem / 16);
-  height: 0px;
+  height: 0;
   border: 1px solid #C3C6DB;
   margin-bottom: 1rem;
 
@@ -140,6 +146,12 @@
 
 .btm span {
   display: inline;
+  cursor: pointer;
+}
+
+.remove-button {
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .btm .ttl {
