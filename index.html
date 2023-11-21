@@ -1,46 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<header>
+<html>
+<head>
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
-</header>
+  <title>Invoice Generator</title>
+  <link href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+</head>
 <body>
-<section class="invoice">
-  <div class="header">
-    <div class="heading">
-      <h2> Invoice Creator </h2>
-      <h3> Thanks for choosing GoodCorp, CLL!</h3>
-    </div>
+<div class="invoice-container">
+  <div class="top-container">
+    <h1>Invoice creator</h1>
+    <p>Thanks for choosing GoodCorp, LLC!</p>
   </div>
-  <div class="purchase_options">
-    <div class="buttons">
-      <button class="btn" id="wash-btn" onclick=""> Wash Car : $10</button>
-      <button class="btn" id="mow"> Mow Lawn: $20</button>
-      <button class="btn" id="pull"> Pull weeds: $30</button>
-    </div>
-    <div class="tasks" id="task-added">
+  <!-- /top container -->
 
-      <div class="item_headers">
-        <span> Task </span>
-        <span> TOTAL</span>
-      </div>
+  <div class="bottom-container">
+    <div class="buttons-section" id="btn-section">
+
     </div>
+    <!-- /buttons section -->
+    <div id="notification">
+
+    </div>
+
+    <div class="table-section">
+      <table class="selected-section"
+             id="selected-section">
+        <tr>
+          <th class="table-left">TASK</th>
+          <th class="table-right">TOTAL</th>
+        </tr>
+
+      </table>
+    </div>
+    <!-- /table section -->
+    <hr>
+    <div class="note-section">
+      <table>
+        <tr>
+          <th class="table-left">NOTES</th>
+          <th class="table-right">TOTAL AMOUNT</th>
+        </tr>
+        <tr>
+          <td id="note-text" class="table-left"></td>
+          <td id="total-amount" class="table-right">$0</td>
+        </tr>
+      </table>
+    </div>
+    <!-- / note section -->
+    <button class="send-btn" id="send-btn">
+      <svg width="21" height="10" viewBox="0 0 52 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M45.2 2.40005H45.2003C46.4253 2.39982 47.604 2.86797 48.4951 3.70859C49.1377 4.31492 49.5957 5.08192 49.8277 5.92127L26 17.8336L2.17228 5.92127C2.40429 5.08192 2.86224 4.31492 3.50493 3.70859C4.39597 2.86797 5.5747 2.39982 6.7997 2.40005H6.79999H45.2ZM25.2844 28.2087L26 28.5665L26.7155 28.2087L50 16.5665V32.8001C50 34.0731 49.4943 35.294 48.5941 36.1942C47.6939 37.0943 46.473 37.6001 45.2 37.6001H6.79999C5.52696 37.6001 4.30606 37.0943 3.40588 36.1942C2.50571 35.294 1.99999 34.0731 1.99999 32.8001V16.5665L25.2844 28.2087Z"
+          fill="white" stroke="white" stroke-width="3.2"/>
+      </svg>
+      Send Receipt
+    </button>
   </div>
-  <div class="footer">
-    <p class="line-breaker"></p>
-    <div class="item_headers btm">
-      <span> Notes </span>
-      <span> TOTAL Amount </span>
-    </div>
-    <div class="item_headers btm">
-      <span class="note" id="note"> </span>
-      <span class="ttl" id="total"> $0 </span>
-    </div>
-    <button class="send" id="send"><i class="material-symbols-outlined">mail</i>Send Invoice</button>
-  </div>
-</section>
-<script src=" ../Invoice_creator/js/main.js"></script>
+  <!-- /bottom container -->
+</div>
+<!-- /invoice container -->
+
+<script src="js/main.js"></script>
 </body>
-
 </html>

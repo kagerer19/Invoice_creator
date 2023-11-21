@@ -1,103 +1,136 @@
-let services = []
-let cost = []
-const buttons = {
-  washBtn: document.getElementById("wash-btn"),
-  mow: document.getElementById("mow"),
-  pull: document.getElementById("pull"),
-  send: document.getElementById("send")
+// With this logic, tasks or services can be added to the services array, resulting in an additional button on the invoice;
+const services = [
+  {
+    task: "Wash Car",
+    price: "10"
+  },
+  {
+    task: "Mow Lawn",
+    price: "20"
+  },
+  {
+    task: "Pull Weeds",
+    price: "30"
+  },
+  {
+    task: "Weeds",
+    price: "30"
+  },
+]
 
+const addBtnSection = document.getElementById("btn-section")
+const taskArr = services.map(obj => (obj.task))
+const priceArr = services.map(obj => parseInt(obj.price))
+const selectedSection = document.getElementById("selected-section")
+const noteText = document.getElementById("note-text")
+const totalAmount = document.getElementById("total-amount")
+const sendBtn = document.getElementById("send-btn")
+let notification = document.getElementById("notification")
+let selectedTasks = []
+let selectedAmount = []
+let addButtons = ""
+let addTasks = []
+let sum = 0
+
+// rendering the services buttons to the frontend
+for (let i = 0; i < taskArr.length; i++) {
+  addButtons += `<button class="add-btn" id="add-btn${i}">${taskArr[i]}: $${priceArr[i]}</button>`
 }
-const total = document.getElementById("total")
-const note = document.getElementById("note")
-const taskAdded = document.getElementById("task-added")
-let totalCost = 0
-let servicesDone = ''
+addBtnSection.innerHTML = addButtons
 
-buttons.washBtn.addEventListener("click", function () {
-  if (buttons.washBtn.clicked) {
-    console.log("button already clicked")
+// getting the IDs for the services buttons
+for (let i = 0; i < taskArr.length; i++) {
+  window['addBtn' + i] = document.getElementById('add-btn' + i)
+  window[`addBtn${i}`].addEventListener("click", function () {
+    renderTasks(i)
+  })
+}
+
+function renderTasks(num) {
+  if (selectedTasks.includes(taskArr[num])) {
+    notification.innerHTML = `<p class="notification-orange">"${taskArr[num]}" has already been added!`
   } else {
-    services.push("Wash Car:")
-    cost.push(10)
-    addServices(services, cost)
-    buttons.washBtn.clicked = true
-    totalCost = 0
+    // storing the order in which the services were selected
+    selectedTasks.push(taskArr[num])
+    selectedAmount.push(priceArr[num])
+
+    addTasks.push(`
+        <tr>
+            <td class="table-left">
+                ${taskArr[num]}
+                <button id="remove-btn${num}" class="remove-btn">Remove</button>
+            </td>
+            <td class="table-right">
+                <span class="currency">$</span>${priceArr[num]}
+            </td>
+        </tr>`)
+
+    //add the selected task to the table on the page
+    renderTask()
+
+    // status notification
+    notification.innerHTML = `<p class="notification-green">"${taskArr[num]}" has been added successfully!`
+
+    // calling the function to render the notes and total amount
+    sumAmounts(num)
+    getRmvBtnId()
   }
-})
-
-
-buttons.mow.addEventListener("click", function () {
-  if (buttons.mow.clicked) {
-    console.log("button already clicked")
-  } else {
-    services.push("Mow Lawn:")
-    cost.push(20)
-    addServices(services, cost)
-    buttons.mow.clicked = true
-  }
-})
-
-buttons.pull.addEventListener("click", function () {
-  if (buttons.pull.clicked) {
-    console.log("button already clicked")
-  } else {
-    services.push("Pull weeds:")
-    cost.push(30)
-    addServices(services, cost)
-    buttons.pull.clicked = true
-  }
-})
-
-buttons.send.addEventListener("click", function () {
-  taskAdded.innerHTML = ""
-  total.innerHTML = ""
-  note.textContent = ""
-  buttons.mow.clicked = false
-  buttons.pull.clicked = false
-  buttons.washBtn.clicked = false
-  services = []
-  cost = []
-  totalCost = 0
-  total.textContent = "$0"
-})
-
-
-function addServices(serv, cost) {
-  totalCost = 0;
-  for (let i = 0; i < serv.length; i++) {
-    servicesDone = `<div class="frame services">
-            <span class="service-done"> ${serv[i]}</span>
-            <span class="remove-button" onclick="removeService(${i})">Remove</span>
-            <span class="cash"> <span>$</span> ${cost[i]} </span>
-        </div>`;
-    totalCost += cost[i];
-  }
-  taskAdded.innerHTML += servicesDone;
-  total.textContent = ` $ ${totalCost}`;
-  note.textContent = "We accept cash, credit card, or PayPal";
 }
 
-// Function to remove a service
-function removeService(index) {
-  // Remove the service at the given index
-  const serviceToRemove = document.querySelector(`.frame.services:nth-child(${index + 1})`);
-  serviceToRemove.remove();
-
-  // Update the total cost after removal
-  updateTotalCost();
+function renderTask() {
+  // rendering the service selected on the page
+  selectedSection.innerHTML = ""
+  for (i = 0; i < addTasks.length; i++) {
+    selectedSection.innerHTML += `${addTasks[i]}`
+  }
 }
 
-// Function to update the total cost after service removal
-function updateTotalCost() {
-  // Recalculate the total cost
-  totalCost = 0;
-  const serviceFrames = document.querySelectorAll('.frame.services');
-  serviceFrames.forEach((serviceFrame) => {
-    const costElement = serviceFrame.querySelector('.cash span:last-child');
-    totalCost += parseFloat(costElement.textContent);
-  });
+function getRmvBtnId() {
+  let RmvBtnTaskIndex = 0
 
-  // Update the total cost display
-  total.textContent = ` $ ${totalCost}`;
+  //  getting the IDs of the remove buttons
+  for (let i = 0; i < selectedTasks.length; i++) {
+    RmvBtnTaskIndex = taskArr.indexOf(selectedTasks[i])
+    // console.log(RmvBtnTaskIndex)
+
+    window[`rmvBtn${RmvBtnTaskIndex}`] = document.getElementById(`remove-btn${RmvBtnTaskIndex}`)
+    window[`rmvBtn${RmvBtnTaskIndex}`].addEventListener("click", function () {
+
+      subAmounts(i)
+      removeTask(i)
+    })
+  }
 }
 
+
+function sumAmounts(num) {
+  sum += priceArr[num]
+  noteText.textContent = "We accept cash, credit card, or PayPal"
+  totalAmount.innerHTML = `<span class="currency">$</span>${sum}`
+}
+
+function removeTask(num) {
+
+
+  notification.innerHTML = `<p class="notification-red">"${selectedTasks[num]}" has been removed successfully!`
+
+  addTasks.splice(num, 1)
+  selectedTasks.splice(num, 1)
+  selectedAmount.splice(num, 1)
+
+  renderTask()
+  getRmvBtnId()
+}
+
+function subAmounts(num) {
+  sum -= selectedAmount[num]
+  totalAmount.innerHTML = `<span class="currency">$</span>${sum}`
+  if (sum === 0) {
+    noteText.textContent = ""
+  }
+
+}
+
+sendBtn.addEventListener("click", function () {
+  location.reload(true)
+})
